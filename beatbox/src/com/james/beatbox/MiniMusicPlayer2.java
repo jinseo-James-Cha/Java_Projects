@@ -27,7 +27,13 @@ public class MiniMusicPlayer2 implements ControllerEventListener{
 			Track track = seq.createTrack();
 			
 			for( int i = 40; i < 100; i += 4) {
+				
 				track.add(makeEvent(144,1,i,100,i));
+				
+				// 176은 이벤트 유형이 ControllerEvent라는 것을 지정하기 위한 숫
+				// 127은 인자로 전달하여 별도의 ControllerEvent를 추가
+				// 기능적인 면은 없지만 연주될때마다 Event를 받아 올 수 있다.
+				
 				track.add(makeEvent(176, 1, 127, 0, i));
 				track.add(makeEvent(128,1,i,100,i+2));
 			}
