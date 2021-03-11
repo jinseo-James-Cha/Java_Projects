@@ -53,7 +53,7 @@ public class MiniMusicCmdLine {
 			ShortMessage b = new ShortMessage();
 			b.setMessage(128, 1, note, 100);
 			// b message를 16번째 비트에 실행한다.
-			MidiEvent noteOff = new MidiEvent(b, 16);
+			MidiEvent noteOff = new MidiEvent(b, 32);
 			track.add(noteOff);
 			
 			/*

@@ -26,20 +26,24 @@ public class MiniMusicPlayer2 implements ControllerEventListener{
 			Sequence seq = new Sequence(Sequence.PPQ, 4);
 			Track track = seq.createTrack();
 			
-			for( int i = 40; i < 100; i += 4) {
+			for( int i = 60; i < 120; i += 5) {
 				
-				track.add(makeEvent(144,1,i,100,i));
+				//noteOn
+				track.add(makeEvent(144,1,i,120,i));
 				
 				// 176은 이벤트 유형이 ControllerEvent라는 것을 지정하기 위한 숫
 				// 127은 인자로 전달하여 별도의 ControllerEvent를 추가
 				// 기능적인 면은 없지만 연주될때마다 Event를 받아 올 수 있다.
-				
+				// 144번의 이벤트 유형(NoteOn)의 EVent를 받아올수 없기 때문에
+				// 간접적이나마 144이벤트가 언제 일어났는지 알 수 있다.
 				track.add(makeEvent(176, 1, 127, 0, i));
-				track.add(makeEvent(128,1,i,100,i+2));
+				
+				// noteOff
+				track.add(makeEvent(128,1,i,120,i+2));
 			}
 			
 			sequencer.setSequence(seq);
-			sequencer.setTempoInBPM(220);
+			sequencer.setTempoInBPM(300);
 			sequencer.start();
 			
 		} catch(Exception e) {
@@ -47,6 +51,11 @@ public class MiniMusicPlayer2 implements ControllerEventListener{
 		}
 	}
 		
+	/*
+	 * Event handler메소드이다.
+	 * ControllerEventListener 인터페이스의 추상 메소드이며, 반드시 override하게 되어있다.
+	 * Event가 발생할때마다 자동으로 메소드가 실행된다.
+	 * */
 	@Override
 	public void controlChange(ShortMessage event) {
 		System.out.println("la");
