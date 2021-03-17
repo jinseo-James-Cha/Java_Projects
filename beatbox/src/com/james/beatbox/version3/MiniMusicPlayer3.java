@@ -40,10 +40,10 @@ public class MiniMusicPlayer3 {
 			Track track = seq.createTrack();
 			
 			int r = 0;
-			for ( int i = 0; i < 60; i += 4) {
+			for ( int i = 0; i < 150; i += 4) {
 				
 				// 메세지가 언제 실행되는지를 나타내는 i
-				r = (int) ((Math.random() * 20) + 100);
+				r = (int) ((Math.random() * 20) + 70);
 				//r += 8;
 				track.add(makeEvent(144, 1, r, 100, i));
 				track.add(makeEvent(176, 1, 127, 0, i));
